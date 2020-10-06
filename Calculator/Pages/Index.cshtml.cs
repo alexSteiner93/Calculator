@@ -12,7 +12,7 @@ namespace Calculator.Pages
     {
         private readonly ILogger<IndexModel> _logger;
 
-    [BindProperty]
+        [BindProperty]
         public calculator Calculator { get; set; }
 
         public IndexModel(ILogger<IndexModel> logger)
@@ -27,7 +27,14 @@ namespace Calculator.Pages
         }
         public IActionResult OnPost()
         {
-            return RedirectToPage("./Calculator", "CalculatorParam", this.Calculator);
+            if (ModelState.IsValid)
+            {
+                return RedirectToPage("./Calculator", "CalculatorParam", this.Calculator);
+            }
+            else
+            {
+                return Page();
+            }
         }
     }
 }
