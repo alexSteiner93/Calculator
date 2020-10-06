@@ -4,7 +4,19 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<form method="post">
+    <div class="form-group">
+        <label for="number1">Please Enter First number</label>
+        <input class="form-control" asp-for=@Model.Calculator.FirstOperand id="number1"/>
+        <label for="selectbox" class="mt-1">Please choose an operator</label>
+        <select id="selectbox" class="form-control" asp-for=@Model.Calculator.Operand>
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </select>
+        <label for="number2" class="mt-1">Please Enter second number</label>
+        <input class="form-control" asp-for=@Model.Calculator.SecondOperand id="number2" />
+        <button id="submitButton" class="btn btn-primary mt-2" type="submit">Calculate !</button>
+    </div>
+</form>
